@@ -1,17 +1,41 @@
-apply plugin: 'java'
-apply plugin: 'maven'
+buildscript {
+     repositories {
+          mavenCentral()
+     }
 
-group = 'de.felix_klauke'
-version = '1.0-SNAPSHOT'
+     dependencies {
 
-description = """"""
+     }
+}
 
-sourceCompatibility = 1.5
-targetCompatibility = 1.5
+allprojects {
+     apply plugin: 'java'
+     apply plugin: 'jacoco'
 
+     repositories {
+          mavenCentral()
+     }
 
+     dependencies {
 
-repositories {
-        
-     maven { url "http://repo.maven.apache.org/maven2" }
+     }
+}
+
+task codeCoverageReport(type: JacocoReport) {
+     executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
+
+     subprojects.each {
+          sourceSets it.sourceSets.main
+     }
+
+     reports {
+          html.enabled = true
+          html.setDestination(new File("${buildDir}/reports/jacoco/report.html"))
+          xml.enabled = true
+          xml.setDestination(new File("${buildDir}/reports/jacoco/report.xml"))
+     }
+}
+
+codeCoverageReport.dependsOn {
+     subprojects*.test
 }
