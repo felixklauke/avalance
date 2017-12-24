@@ -1,0 +1,41 @@
+buildscript {
+     repositories {
+          mavenCentral()
+     }
+
+     dependencies {
+
+     }
+}
+
+allprojects {
+     apply plugin: 'java'
+     apply plugin: 'jacoco'
+
+     repositories {
+          mavenCentral()
+     }
+
+     dependencies {
+
+     }
+}
+
+task codeCoverageReport(type: JacocoReport) {
+     executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
+
+     subprojects.each {
+          sourceSets it.sourceSets.main
+     }
+
+     reports {
+          html.enabled = true
+          html.setDestination(new File("${buildDir}/reports/jacoco/report.html"))
+          xml.enabled = true
+          xml.setDestination(new File("${buildDir}/reports/jacoco/report.xml"))
+     }
+}
+
+codeCoverageReport.dependsOn {
+     subprojects*.test
+}
