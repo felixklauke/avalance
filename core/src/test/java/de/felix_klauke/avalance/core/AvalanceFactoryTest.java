@@ -1,6 +1,6 @@
 package de.felix_klauke.avalance.core;
 
-import de.felix_klauke.avalance.core.config.AvalanceConfig;
+import de.felix_klauke.avalance.core.config.AvalanceCoreConfig;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -12,8 +12,8 @@ public class AvalanceFactoryTest {
 
     @Test
     public void createAvalance() {
-        AvalanceConfig avalanceConfig = new AvalanceConfig();
-        Avalance avalance = AvalanceFactory.createAvalance(avalanceConfig);
+        AvalanceCoreConfig coreConfig = new AvalanceCoreConfig();
+        Avalance avalance = AvalanceFactory.createAvalance(coreConfig);
 
         assertNotNull(avalance);
     }

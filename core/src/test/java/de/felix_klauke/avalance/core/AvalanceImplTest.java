@@ -1,6 +1,6 @@
 package de.felix_klauke.avalance.core;
 
-import de.felix_klauke.avalance.core.config.AvalanceConfig;
+import de.felix_klauke.avalance.core.config.AvalanceCoreConfig;
 import org.junit.Before;
 
 import static org.junit.Assert.*;
@@ -14,7 +14,7 @@ public class AvalanceImplTest {
 
     @Before
     public void setUp() throws Exception {
-        AvalanceConfig avalanceConfig = new AvalanceConfig();
-        avalance = AvalanceFactory.createAvalance(avalanceConfig);
+        AvalanceCoreConfig coreConfig = new AvalanceCoreConfig();
+        avalance = AvalanceFactory.createAvalance(coreConfig);
     }
 }
