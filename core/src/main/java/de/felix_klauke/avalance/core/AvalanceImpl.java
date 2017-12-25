@@ -1,15 +1,15 @@
 package de.felix_klauke.avalance.core;
 
-import de.felix_klauke.avalance.core.config.AvalanceConfig;
+import de.felix_klauke.avalance.core.config.AvalanceCoreConfig;
 
 /**
  * @author Felix Klauke <fklauke@itemis.de>
  */
 public class AvalanceImpl implements Avalance {
 
-    private final AvalanceConfig avalanceConfig;
+    private final AvalanceCoreConfig coreConfig;
 
-    public AvalanceImpl(AvalanceConfig avalanceConfig) {
-        this.avalanceConfig = avalanceConfig;
+    AvalanceImpl(AvalanceCoreConfig coreConfig) {
+        this.coreConfig = coreConfig;
     }
 }
