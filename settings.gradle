@@ -1,3 +1,6 @@
 include 'core'
 
 rootProject.name = 'avalance'
+include 'server'
+findProject(':server')?.name = 'avalance-server'
+
