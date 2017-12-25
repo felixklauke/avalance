@@ -1,1 +1,3 @@
-rootProject.name = 'avalance-parent'
+include 'core'
+
+rootProject.name = 'avalance'
