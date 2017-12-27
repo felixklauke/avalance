@@ -1,13 +1,15 @@
-apply plugin: 'java'
-apply plugin: 'maven'
-apply plugin: 'jacoco'
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'maven'
+    apply plugin: 'jacoco'
 
-repositories {
-    jcenter()
-}
+    repositories {
+        jcenter()
+    }
 
-dependencies {
-    testCompile 'junit:junit:4.12'
+    dependencies {
+        testCompile 'junit:junit:4.12'
+    }
 }
 
 task codeCoverageReport(type: JacocoReport) {
