@@ -3,10 +3,6 @@ language: java
 before_script:
   - chmod +x gradlew
 script:
-  - gradle check
-  - gradle build
-  - gradle test
-  - gradle codeCoverageReport
-  - gradle jacocoTestReport
+  - gradle build test gradle codeCoverageReport jacocoTestReport
 after_success:
   - bash <(curl -s https://codecov.io/bash)
