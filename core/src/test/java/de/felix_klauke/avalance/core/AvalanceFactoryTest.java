@@ -3,7 +3,7 @@ package de.felix_klauke.avalance.core;
 import de.felix_klauke.avalance.core.config.AvalanceCoreConfig;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * @author Felix Klauke <fklauke@itemis.de>
@@ -16,5 +16,10 @@ public class AvalanceFactoryTest {
         Avalance avalance = AvalanceFactory.createAvalance(coreConfig);
 
         assertNotNull(avalance);
+    }
+
+    @Test(expected = AssertionError.class)
+    public void testInit() {
+        new AvalanceFactory();
     }
 }

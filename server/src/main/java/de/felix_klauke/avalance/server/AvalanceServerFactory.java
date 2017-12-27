@@ -7,6 +7,10 @@ import de.felix_klauke.avalance.server.config.AvalanceServerConfig;
  */
 public class AvalanceServerFactory {
 
+    AvalanceServerFactory() {
+        throw new AssertionError("You should not initialize factories.");
+    }
+
     public static AvalanceServer createAvalanceServer(AvalanceServerConfig avalanceServerConfig) {
         return new AvalanceServerImpl(avalanceServerConfig);
     }
