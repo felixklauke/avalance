@@ -1,7 +1,6 @@
 package de.felix_klauke.avalance.server;
 
-import de.felix_klauke.avalance.core.routing.Router;
-import de.felix_klauke.avalance.core.routing.RouterImpl;
+import de.felix_klauke.avalance.core.Avalance;
 import de.felix_klauke.avalance.server.config.AvalanceServerConfig;
 
 /**
@@ -17,17 +16,18 @@ public class AvalanceServerImpl implements AvalanceServer {
     private final AvalanceServerConfig avalanceServerConfig;
 
     /**
-     * The router that will route all requests.
+     * The internal avalance instance.
      */
-    private final Router router;
+    private final Avalance avalance;
 
     /**
      * Create a new server instance.
      *
      * @param avalanceServerConfig The avalance server config.
+     * @param avalance The avalance instance.
      */
-    AvalanceServerImpl(AvalanceServerConfig avalanceServerConfig) {
+    AvalanceServerImpl(AvalanceServerConfig avalanceServerConfig, Avalance avalance) {
         this.avalanceServerConfig = avalanceServerConfig;
-        this.router = new RouterImpl();
+        this.avalance = avalance;
     }
 }
