@@ -1,8 +1,8 @@
 package de.felix_klauke.avalance.server;
 
+import de.felix_klauke.avalance.core.routing.Router;
+import de.felix_klauke.avalance.core.routing.RouterImpl;
 import de.felix_klauke.avalance.server.config.AvalanceServerConfig;
-import de.felix_klauke.avalance.server.routing.Router;
-import de.felix_klauke.avalance.server.routing.RouterImpl;
 
 /**
  * The basic implementation of the {@link AvalanceServer}.

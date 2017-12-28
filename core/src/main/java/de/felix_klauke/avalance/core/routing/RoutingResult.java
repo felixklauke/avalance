@@ -1,4 +1,4 @@
-package de.felix_klauke.avalance.server.routing;
+package de.felix_klauke.avalance.core.routing;
 
 /**
  * @author Felix Klauke <fklauke@itemis.de>
