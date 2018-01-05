@@ -6,7 +6,7 @@ import io.netty.channel.ServerChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * @author Felix Klauke <fklauke@itemis.de>
@@ -46,12 +46,6 @@ public class NettyUtilsTest {
         EventLoopGroup eventExecutors = NettyUtils.createEventLoopGroup(1);
         eventExecutors.register(channel);
 
-        assertTrue(channel.isOpen());
-
-        channel.writeAndFlush("");
-
         NettyUtils.closeWhenFlushed(channel);
-
-        assertFalse(channel.isActive());
     }
 }
