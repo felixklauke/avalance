@@ -24,7 +24,7 @@ public class AvalanceHttpServerHandlerTest {
 
     @Before
     public void setUp() {
-        avalanceHttpServerHandler = new AvalanceHttpServerHandler();
+        avalanceHttpServerHandler = new AvalanceHttpServerHandler(avalanceServer);
     }
 
     @Test

@@ -17,7 +17,7 @@ public class AvalanceHttpServerChannelInitializerTest {
 
     @Before
     public void setUp() {
-        channelInitializer = new AvalanceHttpServerChannelInitializer();
+        channelInitializer = new AvalanceHttpServerChannelInitializer(avalanceServer);
     }
 
     @Test
