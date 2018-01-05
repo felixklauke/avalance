@@ -1,5 +1,7 @@
 package de.felix_klauke.avalance.server.http;
 
+import de.felix_klauke.avalance.server.AvalanceServerFactory;
+import de.felix_klauke.avalance.server.config.AvalanceServerConfig;
 import io.netty.buffer.ByteBufAllocator;
 import io.netty.channel.*;
 import io.netty.handler.codec.DecoderResult;
@@ -24,7 +26,7 @@ public class AvalanceHttpServerHandlerTest {
 
     @Before
     public void setUp() {
-        avalanceHttpServerHandler = new AvalanceHttpServerHandler(avalanceServer);
+        avalanceHttpServerHandler = new AvalanceHttpServerHandler(AvalanceServerFactory.createAvalanceServer(new AvalanceServerConfig("")));
     }
 
     @Test
