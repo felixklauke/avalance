@@ -1,5 +1,7 @@
 package de.felix_klauke.avalance.server.http;
 
+import de.felix_klauke.avalance.server.AvalanceServerFactory;
+import de.felix_klauke.avalance.server.config.AvalanceServerConfig;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import org.junit.Before;
@@ -17,7 +19,7 @@ public class AvalanceHttpServerChannelInitializerTest {
 
     @Before
     public void setUp() {
-        channelInitializer = new AvalanceHttpServerChannelInitializer();
+        channelInitializer = new AvalanceHttpServerChannelInitializer(AvalanceServerFactory.createAvalanceServer(new AvalanceServerConfig("")));
     }
 
     @Test
@@ -28,6 +30,6 @@ public class AvalanceHttpServerChannelInitializerTest {
             e.printStackTrace();
         }
 
-        assertEquals(3, socketChannel.pipeline().toMap().size());
+        assertEquals(4, socketChannel.pipeline().toMap().size());
     }
 }

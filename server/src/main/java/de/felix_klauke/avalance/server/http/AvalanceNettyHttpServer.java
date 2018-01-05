@@ -53,10 +53,11 @@ public class AvalanceNettyHttpServer implements AvalanceHttpServer {
                 .channel(NettyUtils.getServerChannelClass())
                 .option(ChannelOption.SO_BACKLOG, 1024)
                 .handler(new LoggingHandler(LogLevel.INFO))
-                .childHandler(new AvalanceHttpServerChannelInitializer());
+                .childHandler(new AvalanceHttpServerChannelInitializer(avalanceServer));
 
         try {
             Channel channel = serverBootstrap.bind(8080).sync().channel();
+
 
             channel.closeFuture();
         } catch (InterruptedException e) {

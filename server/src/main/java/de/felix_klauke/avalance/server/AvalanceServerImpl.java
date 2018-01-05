@@ -1,6 +1,8 @@
 package de.felix_klauke.avalance.server;
 
 import de.felix_klauke.avalance.core.Avalance;
+import de.felix_klauke.avalance.core.routing.RouterContext;
+import de.felix_klauke.avalance.core.routing.RouterRequest;
 import de.felix_klauke.avalance.server.config.AvalanceServerConfig;
 import de.felix_klauke.avalance.server.http.AvalanceHttpServer;
 import de.felix_klauke.avalance.server.http.AvalanceNettyHttpServer;
@@ -32,11 +34,15 @@ public class AvalanceServerImpl implements AvalanceServer {
      *
      * @param avalanceServerConfig The avalance server config.
      * @param avalance             The avalance instance.
-     * @param avalanceHttpServer   The http server.
      */
     AvalanceServerImpl(AvalanceServerConfig avalanceServerConfig, Avalance avalance) {
         this.avalanceServerConfig = avalanceServerConfig;
         this.avalance = avalance;
         this.avalanceHttpServer = new AvalanceNettyHttpServer(this);
+    }
+
+    @Override
+    public void processRequest(RouterContext routerContext, RouterRequest routerRequest) {
+        avalance.processRequest(routerContext, routerRequest);
     }
 }
