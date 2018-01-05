@@ -30,6 +30,6 @@ public class AvalanceHttpServerChannelInitializerTest {
             e.printStackTrace();
         }
 
-        assertEquals(3, socketChannel.pipeline().toMap().size());
+        assertEquals(4, socketChannel.pipeline().toMap().size());
     }
 }
