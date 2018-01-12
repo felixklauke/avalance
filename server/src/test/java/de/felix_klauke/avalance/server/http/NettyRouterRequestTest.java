@@ -2,6 +2,7 @@ package de.felix_klauke.avalance.server.http;
 
 import io.netty.handler.codec.http.HttpRequest;
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -20,5 +21,10 @@ public class NettyRouterRequestTest {
     @Before
     public void setUp() {
         nettyRouterRequest = new NettyRouterRequest(httpRequest);
+    }
+
+    @Test
+    public void dummy() {
+
     }
 }
