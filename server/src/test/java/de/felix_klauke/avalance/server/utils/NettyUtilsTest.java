@@ -1,10 +1,9 @@
 package de.felix_klauke.avalance.server.utils;
 
-import io.netty.channel.Channel;
-import io.netty.channel.EventLoopGroup;
-import io.netty.channel.ServerChannel;
-import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.*;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import static org.junit.Assert.assertNotNull;
 
@@ -12,6 +11,11 @@ import static org.junit.Assert.assertNotNull;
  * @author Felix Klauke <fklauke@itemis.de>
  */
 public class NettyUtilsTest {
+
+    @Test(expected = AssertionError.class)
+    public void preventInit() {
+        new NettyUtils();
+    }
 
     @Test
     public void createEventLoopGroup() {
@@ -41,11 +45,25 @@ public class NettyUtilsTest {
 
     @Test
     public void closeWhenFlushed() {
-        Channel channel = new NioSocketChannel();
+        Channel channel = Mockito.mock(Channel.class);
 
-        EventLoopGroup eventExecutors = NettyUtils.createEventLoopGroup(1);
-        eventExecutors.register(channel);
+        Mockito.verifyNoMoreInteractions(channel);
 
         NettyUtils.closeWhenFlushed(channel);
     }
+
+    @Test
+    public void closeWhenFlushedWhielActive() {
+        Channel channel = Mockito.mock(Channel.class);
+        ChannelFuture channelFuture = Mockito.mock(ChannelFuture.class);
+
+        Mockito.when(channel.isActive()).thenReturn(true);
+        Mockito.when(channel.writeAndFlush(Mockito.any())).thenReturn(channelFuture);
+
+        NettyUtils.closeWhenFlushed(channel);
+
+        Mockito.verify(channel).writeAndFlush(Mockito.any(ByteBuf.class));
+        Mockito.verify(channelFuture).addListener(Mockito.any(ChannelFutureListener.class));
+    }
+
 }

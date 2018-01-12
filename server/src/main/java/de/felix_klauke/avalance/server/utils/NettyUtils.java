@@ -19,6 +19,10 @@ import io.netty.util.internal.PlatformDependent;
  */
 public class NettyUtils {
 
+    NettyUtils() {
+        throw new AssertionError("You should not initialize util classes.");
+    }
+
     private static final boolean EPOLL = !PlatformDependent.isWindows() && Epoll.isAvailable();
 
     public static EventLoopGroup createEventLoopGroup(int threadAmount) {
