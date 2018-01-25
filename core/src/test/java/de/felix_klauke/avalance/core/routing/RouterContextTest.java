@@ -24,7 +24,7 @@ public class RouterContextTest {
 
     @Test
     public void setRoutingResult() {
-        RoutingResult routingResult = new RoutingResult();
+        RoutingResult routingResult = new RoutingResult("", 9000);
 
         assertNotEquals(routingResult, routerContext.getRoutingResult());
 
