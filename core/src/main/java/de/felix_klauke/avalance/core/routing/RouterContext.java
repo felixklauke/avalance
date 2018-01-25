@@ -10,7 +10,7 @@ public class RouterContext {
     /**
      * The result of the routing flow.
      */
-    private RoutingResult routingResult = new RoutingResult();
+    private RoutingResult routingResult = new SkeletonRoutingResult();
 
     /**
      * Get the result of the routing result.
