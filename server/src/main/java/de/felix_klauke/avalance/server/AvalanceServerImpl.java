@@ -6,6 +6,8 @@ import de.felix_klauke.avalance.core.routing.RouterRequest;
 import de.felix_klauke.avalance.server.config.AvalanceServerConfig;
 import de.felix_klauke.avalance.server.http.AvalanceHttpServer;
 import de.felix_klauke.avalance.server.http.AvalanceNettyHttpServer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * The basic implementation of the {@link AvalanceServer}.
@@ -13,6 +15,11 @@ import de.felix_klauke.avalance.server.http.AvalanceNettyHttpServer;
  * @author Felix Klauke <fklauke@itemis.de>
  */
 public class AvalanceServerImpl implements AvalanceServer {
+
+    /**
+     * The logger to log all server actions.
+     */
+    private final Logger logger = LoggerFactory.getLogger(AvalanceServerImpl.class);
 
     /**
      * The server config.
