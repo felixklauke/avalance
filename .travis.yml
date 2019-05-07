@@ -1,8 +1,29 @@
+######################################
+### Configure programming language ###
+######################################
 language: java
 
-before_script:
-  - chmod +x gradlew
+##################################
+### Make sure using Oracle JDK ###
+##################################
+jdk:
+  - oraclejdk11
+
+###################################
+### Disable Email notifications ###
+###################################
+notifications:
+  email: false
+
+###########################
+### Actual Build Script ###
+###########################
 script:
-  - gradle build test codeCoverageReport jacocoTestReport
+  - ./gradlew build check
+  - ./gradlew codeCoverageReport
+
+###################################
+### Upload Code Coverage Report ###
+###################################
 after_success:
   - bash <(curl -s https://codecov.io/bash)
