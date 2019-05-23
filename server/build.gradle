@@ -9,11 +9,9 @@ repositories {
 dependencies {
     compile project(':core')
 
-    // Netty
-    compile group: 'io.netty', name: 'netty-all', version: '4.1.36.Final'
+    compile 'de.d3adspace.constrictor:constrictor-netty:2.2'
 
     // Testing
-    testCompile group: 'junit', name: 'junit', version: '4.12'
     testCompile group: 'org.powermock', name: 'powermock-module-junit4', version: '2.0.0-beta.5'
     testCompile group: 'org.powermock', name: 'powermock-api-mockito2', version: '2.0.0-beta.5'
 

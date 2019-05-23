@@ -3,15 +3,22 @@ allprojects {
     apply plugin: 'maven'
     apply plugin: 'jacoco'
 
-    sourceCompatibility = 11
-    targetCompatibility = 11
+    sourceCompatibility = 1.11
+    targetCompatibility = 1.11
 
     repositories {
         jcenter()
+
+        maven {
+            url 'https://repository.klauke-enterprises.com/repository/maven-snapshots/'
+        }
+        maven {
+            url 'https://repository.klauke-enterprises.com/repository/maven-releases/'
+        }
     }
 
     dependencies {
-        testCompile 'junit:junit:4.12'
+        testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.4.2'
     }
 }
 

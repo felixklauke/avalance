@@ -1,7 +1,7 @@
 package de.felixklauke.avalance.server.http;
 
+import de.d3adspace.constrictor.netty.NettyUtils;
 import de.felixklauke.avalance.server.AvalanceServer;
-import de.felixklauke.avalance.server.utils.NettyUtils;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelOption;
@@ -45,12 +45,12 @@ public class AvalanceNettyHttpServer implements AvalanceHttpServer {
 
     @Override
     public void start() {
-        bossGroup = NettyUtils.createEventLoopGroup(1);
-        workerGroup = NettyUtils.createEventLoopGroup(4);
+        bossGroup = NettyUtils.createBossGroup(1);
+        workerGroup = NettyUtils.createWorkerGroup(4);
 
         serverBootstrap = new ServerBootstrap();
         serverBootstrap.group(bossGroup, workerGroup)
-                .channel(NettyUtils.getServerChannelClass())
+                .channel(NettyUtils.getServerSocketChannel())
                 .option(ChannelOption.SO_BACKLOG, 1024)
                 .handler(new LoggingHandler(LogLevel.INFO))
                 .childHandler(new AvalanceHttpServerChannelInitializer(avalanceServer));
