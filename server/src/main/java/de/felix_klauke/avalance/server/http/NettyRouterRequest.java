@@ -4,7 +4,7 @@ import de.felix_klauke.avalance.core.routing.RouterRequest;
 import io.netty.handler.codec.http.HttpRequest;
 
 /**
- * @author Felix Klauke <fklauke@itemis.de>
+ * @author Felix Klauke <info@felix-klauke.de>
  */
 public class NettyRouterRequest extends RouterRequest {
 

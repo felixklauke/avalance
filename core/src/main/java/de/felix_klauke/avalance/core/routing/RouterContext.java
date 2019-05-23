@@ -3,7 +3,7 @@ package de.felix_klauke.avalance.core.routing;
 /**
  * The basic representation of the routing flow.
  *
- * @author Felix Klauke <fklauke@itemis.de>
+ * @author Felix Klauke <info@felix-klauke.de>
  */
 public class RouterContext {
 

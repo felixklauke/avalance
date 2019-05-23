@@ -11,7 +11,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import static org.junit.Assert.assertEquals;
 
 /**
- * @author Felix Klauke <fklauke@itemis.de>
+ * @author Felix Klauke <info@felix-klauke.de>
  */
 @RunWith(MockitoJUnitRunner.class)
 public class NettyRouterContextTest {

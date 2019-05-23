@@ -12,7 +12,7 @@ import io.netty.handler.codec.http.HttpResponseStatus;
 import io.netty.handler.codec.http.HttpVersion;
 
 /**
- * @author Felix Klauke <fklauke@itemis.de>
+ * @author Felix Klauke <info@felix-klauke.de>
  */
 public class AvalanceHttpServerHandler extends SimpleChannelInboundHandler<HttpRequest> {
 

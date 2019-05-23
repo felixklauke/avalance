@@ -3,7 +3,7 @@ package de.felix_klauke.avalance.server.http;
 /**
  * The central server receiving all http requests.
  *
- * @author Felix Klauke <fklauke@itemis.de>
+ * @author Felix Klauke <info@felix-klauke.de>
  */
 public interface AvalanceHttpServer {
 

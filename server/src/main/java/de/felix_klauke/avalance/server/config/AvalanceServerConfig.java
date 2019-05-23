@@ -3,7 +3,7 @@ package de.felix_klauke.avalance.server.config;
 /**
  * Basic config of the avalance server module.
  *
- * @author Felix Klauke <fklauke@itemis.de>
+ * @author Felix Klauke <info@felix-klauke.de>
  */
 public class AvalanceServerConfig {
 

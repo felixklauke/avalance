@@ -9,7 +9,7 @@ import io.netty.handler.codec.http.HttpResponseEncoder;
 import io.netty.handler.logging.LoggingHandler;
 
 /**
- * @author Felix Klauke <fklauke@itemis.de>
+ * @author Felix Klauke <info@felix-klauke.de>
  */
 public class AvalanceHttpServerChannelInitializer extends ChannelInitializer<SocketChannel> {
 

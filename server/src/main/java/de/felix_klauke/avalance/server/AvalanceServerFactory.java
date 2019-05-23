@@ -5,7 +5,7 @@ import de.felix_klauke.avalance.core.config.AvalanceCoreConfig;
 import de.felix_klauke.avalance.server.config.AvalanceServerConfig;
 
 /**
- * @author Felix Klauke <fklauke@itemis.de>
+ * @author Felix Klauke <info@felix-klauke.de>
  */
 public class AvalanceServerFactory {
 

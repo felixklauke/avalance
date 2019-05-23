@@ -3,7 +3,7 @@ package de.felix_klauke.avalance.core.routing;
 /**
  * The internal router that will process all requests.
  *
- * @author Felix Klauke <fklauke@itemis.de>
+ * @author Felix Klauke <info@felix-klauke.de>
  */
 public interface Router {
 

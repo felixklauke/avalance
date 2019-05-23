@@ -1,7 +1,7 @@
 package de.felix_klauke.avalance.core.routing;
 
 /**
- * @author Felix Klauke <fklauke@itemis.de>
+ * @author Felix Klauke <info@felix-klauke.de>
  */
 public class SkeletonRoutingResult extends RoutingResult {
 

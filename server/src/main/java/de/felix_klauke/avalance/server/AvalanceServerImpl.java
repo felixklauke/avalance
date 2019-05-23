@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 /**
  * The basic implementation of the {@link AvalanceServer}.
  *
- * @author Felix Klauke <fklauke@itemis.de>
+ * @author Felix Klauke <info@felix-klauke.de>
  */
 public class AvalanceServerImpl implements AvalanceServer {
 

@@ -9,7 +9,7 @@ import de.felix_klauke.avalance.core.routing.RouterRequest;
 /**
  * The default implementation of {@link Avalance}.
  *
- * @author Felix Klauke <fklauke@itemis.de>
+ * @author Felix Klauke <info@felix-klauke.de>
  */
 public class AvalanceImpl implements Avalance {
 
