@@ -1,3 +1,7 @@
+<p align="center">
+<img src=".github/logo.png" alt="Avalance" title="Avalance" />
+</p>
+
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/FelixKlauke/avalance)
 [![codecov](https://codecov.io/gh/FelixKlauke/avalance/branch/dev/graph/badge.svg)](https://codecov.io/gh/FelixKlauke/avalance)
 
