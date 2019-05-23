@@ -23,7 +23,7 @@
         </triggeringPolicy>
     </appender>
 
-    <logger name="de.felix_klauke.avalance.server" level="DEBUG" additivity="false">
+    <logger name="de.felixklauke.avalance.server" level="DEBUG" additivity="false">
         <appender-ref ref="STDOUT" />
         <appender-ref ref="FILE" />
     </logger>
