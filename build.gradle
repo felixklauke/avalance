@@ -3,6 +3,9 @@ allprojects {
     apply plugin: 'maven'
     apply plugin: 'jacoco'
 
+    sourceCompatibility = 11
+    targetCompatibility = 11
+
     repositories {
         jcenter()
     }
