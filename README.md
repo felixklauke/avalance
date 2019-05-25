@@ -2,6 +2,7 @@
 <img src=".github/logo.png" alt="Avalance" title="Avalance" />
 </p>
 
+[![Quality Gate Status](https://sonar.klauke-enterprises.com/api/project_badges/measure?project=avalance&metric=alert_status)](https://sonar.klauke-enterprises.com/dashboard?id=avalance)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/FelixKlauke/avalance)
 [![codecov](https://codecov.io/gh/FelixKlauke/avalance/branch/dev/graph/badge.svg)](https://codecov.io/gh/FelixKlauke/avalance)
 
