@@ -11,9 +11,15 @@ allprojects {
 
         maven {
             url 'https://repository.klauke-enterprises.com/repository/maven-snapshots/'
+            mavenContent {
+                snapshotsOnly()
+            }
         }
         maven {
             url 'https://repository.klauke-enterprises.com/repository/maven-releases/'
+            mavenContent {
+                releasesOnly()
+            }
         }
     }
 
