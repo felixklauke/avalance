@@ -19,9 +19,8 @@ notifications:
 ### Actual Build Script ###
 ###########################
 script:
-  - ./gradlew build check
+  - ./gradlew build check jacocoTestReport jacocoMergeTest
   - ./gradlew sonarqube -Dsonar.host.url=$SONAR_URL -Dsonar.projectKey=$SONAR_PROJECT_KEY -Dsonar.login=$SONAR_TOKEN
-  - ./gradlew codeCoverageReport
 
 ###################################
 ### Upload Code Coverage Report ###

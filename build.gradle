@@ -1,11 +1,11 @@
 plugins {
     id 'org.sonarqube' version "2.7"
+    id 'jacoco'
 }
 
 allprojects {
     apply plugin: 'java'
     apply plugin: 'maven'
-    apply plugin: 'jacoco'
 
     sourceCompatibility = 1.11
     targetCompatibility = 1.11
@@ -29,24 +29,23 @@ allprojects {
 
     dependencies {
         testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.4.2'
+        testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.4.2'
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+
+    jacocoTestReport {
+        reports {
+            xml.enabled = true
+            csv.enabled = true
+            html.enabled = true
+        }
     }
 }
 
-task codeCoverageReport(type: JacocoReport) {
-    executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
-
-    subprojects.each {
-        sourceSets it.sourceSets.main
-    }
-
-    reports {
-        html.enabled = true
-        html.setDestination(new File("${buildDir}/reports/jacoco/report.html"))
-        xml.enabled = true
-        xml.setDestination(new File("${buildDir}/reports/jacoco/report.xml"))
-    }
-}
-
-codeCoverageReport.dependsOn {
-    subprojects*.test
+task jacocoMergeTest(type: JacocoMerge) {
+    destinationFile = file("$buildDir/jacoco/allTestCoverage.exec")
+    executionData = project.fileTree(dir: '.', include:'**/build/jacoco/test.exec')
 }
