@@ -1,10 +1,9 @@
 package de.felixklauke.avalance.core.routing;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author Felix Klauke <info@felix-klauke.de>
@@ -17,7 +16,7 @@ public class RoutingResultTest {
 
     private RoutingResult routingResult;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         routingResult = new RoutingResult(HOSTNAME, PORT);
     }

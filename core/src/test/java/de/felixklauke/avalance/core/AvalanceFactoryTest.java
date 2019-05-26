@@ -1,9 +1,11 @@
 package de.felixklauke.avalance.core;
 
 import de.felixklauke.avalance.core.config.AvalanceCoreConfig;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author Felix Klauke <info@felix-klauke.de>
@@ -18,8 +20,9 @@ public class AvalanceFactoryTest {
         assertNotNull(avalance);
     }
 
-    @Test(expected = AssertionError.class)
+    @Test
     public void testInit() {
-        new AvalanceFactory();
+        Executable executable = AvalanceFactory::new;
+        assertThrows(AssertionError.class, executable);
     }
 }
