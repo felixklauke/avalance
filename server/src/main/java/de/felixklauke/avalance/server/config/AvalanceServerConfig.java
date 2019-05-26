@@ -1,10 +1,13 @@
 package de.felixklauke.avalance.server.config;
 
+import lombok.Data;
+
 /**
  * Basic config of the avalance server module.
  *
  * @author Felix Klauke <info@felix-klauke.de>
  */
+@Data
 public class AvalanceServerConfig {
 
     /**
@@ -13,20 +16,12 @@ public class AvalanceServerConfig {
     private final String baseUrl;
 
     /**
-     * Create a new Config.
-     *
-     * @param baseUrl The base url.
+     * The host to listen on.
      */
-    public AvalanceServerConfig(String baseUrl) {
-        this.baseUrl = baseUrl;
-    }
+    private final String host;
 
     /**
-     * Get the base url.
-     *
-     * @return The base url.
+     * The port to bind.
      */
-    public String getBaseUrl() {
-        return baseUrl;
-    }
+    private final int port;
 }
