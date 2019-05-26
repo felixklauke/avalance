@@ -6,6 +6,7 @@ plugins {
 allprojects {
     apply plugin: 'java'
     apply plugin: 'maven'
+    apply plugin: 'maven-publish'
     apply plugin: 'jacoco'
 
     sourceCompatibility = 1.11
@@ -36,14 +37,28 @@ allprojects {
     test {
         useJUnitPlatform()
     }
-}
 
-sonarqube {
-    properties {
-        property "sonar.jacoco.reportPaths", "build/jacoco/test.exec"
-        property "sonar.login", "$System.env.SONAR_LOGIN"
-        property "sonar.host.url", "$System.env.SONAR_URL"
-        property "sonar.projectKey", "$System.env.SONAR_PROJECT_KEY"
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                from(components.java)
+            }
+        }
+
+        repositories {
+
+            maven {
+
+                def releasesRepoUrl = 'https://repository.klauke-enterprises.com/repository/maven-releases/'
+                def snapshotsRepoUrl = 'https://repository.klauke-enterprises.com/repository/maven-snapshots/'
+                url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+
+                credentials {
+                    username = System.getenv('NEXUS_USERNAME')
+                    password = System.getenv('NEXUS_PASSWORD')
+                }
+            }
+        }
     }
 }
 
