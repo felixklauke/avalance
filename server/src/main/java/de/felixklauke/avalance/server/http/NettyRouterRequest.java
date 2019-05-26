@@ -8,6 +8,8 @@ import io.netty.handler.codec.http.HttpRequest;
  */
 public class NettyRouterRequest extends RouterRequest {
 
+    private final HttpRequest httpRequest;
+
     /**
      * Create a new router request.
      *
@@ -15,5 +17,10 @@ public class NettyRouterRequest extends RouterRequest {
      */
     public NettyRouterRequest(HttpRequest httpRequest) {
         super();
+        this.httpRequest = httpRequest;
+    }
+
+    public HttpRequest getHttpRequest() {
+        return httpRequest;
     }
 }

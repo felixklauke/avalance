@@ -36,23 +36,32 @@ allprojects {
     test {
         useJUnitPlatform()
     }
-
-    jacocoTestReport {
-        reports {
-            xml.enabled = true
-            csv.enabled = true
-            html.enabled = true
-        }
-    }
 }
 
 sonarqube {
     properties {
-        properties["sonar.jacoco.reportPaths"] = "build/jacoco/test.exec"
+        property "sonar.jacoco.reportPaths", "build/jacoco/test.exec"
+        property "sonar.login", "$System.env.SONAR_LOGIN"
+        property "sonar.host.url", "$System.env.SONAR_URL"
+        property "sonar.projectKey", "$System.env.SONAR_PROJECT_KEY"
     }
 }
 
-task jacocoMergeTest(type: JacocoMerge) {
-    destinationFile = file("build/jacoco/test.exec")
-    executionData = project.fileTree(dir: '.', include:'**/build/jacoco/test.exec')
+task codeCoverageReport(type: JacocoReport, group: "Coverage reports") {
+    executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
+    
+    dependsOn subprojects*.test
+
+    subprojects.each {
+        sourceSets it.sourceSets.main
+    }
+
+    reports {
+        xml.enabled = true
+        xml.destination = file("${buildDir}/reports/jacoco/report.xml")
+        html.enabled = true
+        html.destination file("${buildDir}/reports/jacoco/html")
+        csv.enabled = true
+        csv.destination file("${buildDir}/reports/jacoco/csv")
+    }
 }
