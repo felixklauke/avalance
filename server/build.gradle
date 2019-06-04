@@ -1,0 +1,24 @@
+version 'unspecified'
+
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile project(':core')
+
+    compile 'de.d3adspace.constrictor:constrictor-netty:2.2'
+
+    // Testing
+    testCompile group: 'org.powermock', name: 'powermock-module-junit4', version: '2.0.0-beta.5'
+    testCompile group: 'org.powermock', name: 'powermock-api-mockito2', version: '2.0.0-beta.5'
+
+    // Logging
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+
+    // Lombok
+    compileOnly 'org.projectlombok:lombok:1.18.6'
+    annotationProcessor 'org.projectlombok:lombok:1.18.6'
+}

@@ -1,1 +1,5 @@
-rootProject.name = 'avalance-parent'
+include 'core'
+
+rootProject.name = 'avalance'
+include 'server'
+findProject(':server')?.name = 'avalance-server'

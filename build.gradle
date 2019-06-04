@@ -1,41 +1,84 @@
-buildscript {
-     repositories {
-          mavenCentral()
-     }
-
-     dependencies {
-
-     }
+plugins {
+    id 'org.sonarqube' version "2.7"
+    id 'jacoco'
 }
 
 allprojects {
-     apply plugin: 'java'
-     apply plugin: 'jacoco'
+    apply plugin: 'java'
+    apply plugin: 'maven'
+    apply plugin: 'maven-publish'
+    apply plugin: 'jacoco'
 
-     repositories {
-          mavenCentral()
-     }
+    sourceCompatibility = 1.11
+    targetCompatibility = 1.11
 
-     dependencies {
+    repositories {
+        jcenter()
 
-     }
+        maven {
+            url 'https://repository.klauke-enterprises.com/repository/maven-snapshots/'
+            mavenContent {
+                snapshotsOnly()
+            }
+        }
+        maven {
+            url 'https://repository.klauke-enterprises.com/repository/maven-releases/'
+            mavenContent {
+                releasesOnly()
+            }
+        }
+    }
+
+    dependencies {
+        // Testing
+        testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.4.2'
+        testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.4.2'
+        testCompile group: 'org.junit.platform', name: 'junit-platform-engine', version: '1.2.0'
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                from(components.java)
+            }
+        }
+
+        repositories {
+
+            maven {
+
+                def releasesRepoUrl = 'https://repository.klauke-enterprises.com/repository/maven-releases/'
+                def snapshotsRepoUrl = 'https://repository.klauke-enterprises.com/repository/maven-snapshots/'
+                url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+
+                credentials {
+                    username = System.getenv('NEXUS_USERNAME')
+                    password = System.getenv('NEXUS_PASSWORD')
+                }
+            }
+        }
+    }
 }
 
-task codeCoverageReport(type: JacocoReport) {
-     executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
+task codeCoverageReport(type: JacocoReport, group: "Coverage reports") {
+    executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
 
-     subprojects.each {
-          sourceSets it.sourceSets.main
-     }
+    dependsOn subprojects*.test
 
-     reports {
-          html.enabled = true
-          html.setDestination(new File("${buildDir}/reports/jacoco/report.html"))
-          xml.enabled = true
-          xml.setDestination(new File("${buildDir}/reports/jacoco/report.xml"))
-     }
-}
+    subprojects.each {
+        sourceSets it.sourceSets.main
+    }
 
-codeCoverageReport.dependsOn {
-     subprojects*.test
+    reports {
+        xml.enabled = true
+        xml.destination = file("${buildDir}/reports/jacoco/report.xml")
+        html.enabled = true
+        html.destination file("${buildDir}/reports/jacoco/html")
+        csv.enabled = true
+        csv.destination file("${buildDir}/reports/jacoco/csv")
+    }
 }
