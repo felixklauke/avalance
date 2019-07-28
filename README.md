@@ -39,4 +39,3 @@ Avalance uses [constrictor](https://github.com/d3adspace/constrictor) for networ
     </repository>
 </repositories>
 ```
-
