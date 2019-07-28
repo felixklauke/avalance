@@ -8,11 +8,11 @@ import de.felixklauke.avalance.core.routing.RouterRequest;
  */
 public interface AvalanceServer {
 
-    /**
-     * Process the given request in the given context.
-     *
-     * @param routerContext The context.
-     * @param routerRequest The request.
-     */
-    void processRequest(RouterContext routerContext, RouterRequest routerRequest);
+  /**
+   * Process the given request in the given context.
+   *
+   * @param routerContext The context.
+   * @param routerRequest The request.
+   */
+  void processRequest(RouterContext routerContext, RouterRequest routerRequest);
 }

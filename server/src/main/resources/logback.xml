@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-            <pattern>%d{HH:mm:ss} [%thread] %-5level %class{0} - %msg%n</pattern>
-        </encoder>
-    </appender>
+  <appender class="ch.qos.logback.core.ConsoleAppender" name="STDOUT">
+    <encoder>
+      <pattern>%d{HH:mm:ss} [%thread] %-5level %class{0} - %msg%n</pattern>
+    </encoder>
+  </appender>
 
-    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>log/avalance-server.log</file>
-        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <Pattern>%d{HH:mm:ss} [%thread] %-5level %class{0} - %msg%n</Pattern>
-        </encoder>
+  <appender class="ch.qos.logback.core.rolling.RollingFileAppender" name="FILE">
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <Pattern>%d{HH:mm:ss} [%thread] %-5level %class{0} - %msg%n</Pattern>
+    </encoder>
+    <file>log/avalance-server.log</file>
 
-        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-            <FileNamePattern>log/avalance-server.%i.log.zip</FileNamePattern>
-            <MinIndex>1</MinIndex>
-            <MaxIndex>25</MaxIndex>
-        </rollingPolicy>
+    <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+      <FileNamePattern>log/avalance-server.%i.log.zip</FileNamePattern>
+      <MaxIndex>25</MaxIndex>
+      <MinIndex>1</MinIndex>
+    </rollingPolicy>
 
-        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-            <MaxFileSize>1MB</MaxFileSize>
-        </triggeringPolicy>
-    </appender>
+    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+      <MaxFileSize>1MB</MaxFileSize>
+    </triggeringPolicy>
+  </appender>
 
-    <logger name="de.felixklauke.avalance.server" level="DEBUG" additivity="false">
-        <appender-ref ref="STDOUT" />
-        <appender-ref ref="FILE" />
-    </logger>
+  <logger additivity="false" level="DEBUG" name="de.felixklauke.avalance.server">
+    <appender-ref ref="STDOUT"/>
+    <appender-ref ref="FILE"/>
+  </logger>
 
-    <root level="ERROR">
-        <appender-ref ref="STDOUT" />
-    </root>
+  <root level="ERROR">
+    <appender-ref ref="STDOUT"/>
+  </root>
 </configuration>

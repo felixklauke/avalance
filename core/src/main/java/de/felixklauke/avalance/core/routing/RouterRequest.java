@@ -6,4 +6,5 @@ package de.felixklauke.avalance.core.routing;
  * @author Felix Klauke <info@felix-klauke.de>
  */
 public class RouterRequest {
+
 }

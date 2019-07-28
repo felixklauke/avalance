@@ -7,8 +7,8 @@ package de.felixklauke.avalance.core.routing;
  */
 public class RouterImpl implements Router {
 
-    @Override
-    public void processRequest(RouterContext routerContext, RouterRequest routerRequest) {
+  @Override
+  public void processRequest(RouterContext routerContext, RouterRequest routerRequest) {
 
-    }
+  }
 }

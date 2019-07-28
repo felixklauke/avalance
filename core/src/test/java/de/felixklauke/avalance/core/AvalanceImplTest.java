@@ -8,11 +8,11 @@ import org.junit.jupiter.api.BeforeEach;
  */
 public class AvalanceImplTest {
 
-    private Avalance avalance;
+  private Avalance avalance;
 
-    @BeforeEach
-    public void setUp() throws Exception {
-        AvalanceCoreConfig coreConfig = new AvalanceCoreConfig();
-        avalance = AvalanceFactory.createAvalance(coreConfig);
-    }
+  @BeforeEach
+  public void setUp() throws Exception {
+    AvalanceCoreConfig coreConfig = new AvalanceCoreConfig();
+    avalance = AvalanceFactory.createAvalance(coreConfig);
+  }
 }

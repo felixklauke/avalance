@@ -16,8 +16,8 @@ import lombok.Setter;
 @Getter
 public class RouterContext {
 
-    /**
-     * The result of the routing flow.
-     */
-    private RoutingResult routingResult = new SkeletonRoutingResult();
+  /**
+   * The result of the routing flow.
+   */
+  private RoutingResult routingResult = new SkeletonRoutingResult();
 }

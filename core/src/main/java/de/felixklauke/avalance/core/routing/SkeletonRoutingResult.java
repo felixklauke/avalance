@@ -5,10 +5,10 @@ package de.felixklauke.avalance.core.routing;
  */
 public class SkeletonRoutingResult extends RoutingResult {
 
-    /**
-     * Create a new skeleton routing result with empty data.
-     */
-    public SkeletonRoutingResult() {
-        super("", -1);
-    }
+  /**
+   * Create a new skeleton routing result with empty data.
+   */
+  public SkeletonRoutingResult() {
+    super("", -1);
+  }
 }

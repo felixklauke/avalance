@@ -16,28 +16,28 @@ import io.netty.handler.codec.http.HttpVersion;
  */
 public class AvalanceHttpServerHandler extends SimpleChannelInboundHandler<HttpRequest> {
 
-    /**
-     * The avalance server.
-     */
-    private final AvalanceServer avalanceServer;
+  /**
+   * The avalance server.
+   */
+  private final AvalanceServer avalanceServer;
 
-    /**
-     * Create a new avalance http handler.
-     *
-     * @param avalanceServer The avalance server.
-     */
-    AvalanceHttpServerHandler(AvalanceServer avalanceServer) {
-        this.avalanceServer = avalanceServer;
-    }
+  /**
+   * Create a new avalance http handler.
+   *
+   * @param avalanceServer The avalance server.
+   */
+  AvalanceHttpServerHandler(AvalanceServer avalanceServer) {
+    this.avalanceServer = avalanceServer;
+  }
 
-    @Override
-    protected void channelRead0(ChannelHandlerContext ctx, HttpRequest msg) {
-        ctx.writeAndFlush(new DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.NOT_FOUND))
-                .addListener(ChannelFutureListener.CLOSE);
+  @Override
+  protected void channelRead0(ChannelHandlerContext ctx, HttpRequest msg) {
+    ctx.writeAndFlush(new DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.NOT_FOUND))
+        .addListener(ChannelFutureListener.CLOSE);
 
-        RouterContext routerContext = new NettyRouterContext(ctx, msg);
-        RouterRequest routerRequest = new NettyRouterRequest(msg);
+    RouterContext routerContext = new NettyRouterContext(ctx, msg);
+    RouterRequest routerRequest = new NettyRouterRequest(msg);
 
-        avalanceServer.processRequest(routerContext, routerRequest);
-    }
+    avalanceServer.processRequest(routerContext, routerRequest);
+  }
 }

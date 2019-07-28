@@ -9,11 +9,12 @@ import de.felixklauke.avalance.server.config.AvalanceServerConfig;
  */
 public class AvalanceServerFactory {
 
-    AvalanceServerFactory() {
-        throw new AssertionError("You should not initialize factories.");
-    }
+  AvalanceServerFactory() {
+    throw new AssertionError("You should not initialize factories.");
+  }
 
-    public static AvalanceServer createAvalanceServer(AvalanceServerConfig avalanceServerConfig) {
-        return new AvalanceServerImpl(avalanceServerConfig, AvalanceFactory.createAvalance(new AvalanceCoreConfig()));
-    }
+  public static AvalanceServer createAvalanceServer(AvalanceServerConfig avalanceServerConfig) {
+    return new AvalanceServerImpl(avalanceServerConfig,
+        AvalanceFactory.createAvalance(new AvalanceCoreConfig()));
+  }
 }

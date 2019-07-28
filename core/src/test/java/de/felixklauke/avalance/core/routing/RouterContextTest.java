@@ -1,35 +1,37 @@
 package de.felixklauke.avalance.core.routing;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author Felix Klauke <info@felix-klauke.de>
  */
 public class RouterContextTest {
 
-    private RouterContext routerContext;
+  private RouterContext routerContext;
 
-    @BeforeEach
-    public void setUp() {
-        routerContext = new RouterContext();
-    }
+  @BeforeEach
+  public void setUp() {
+    routerContext = new RouterContext();
+  }
 
-    @Test
-    public void getRoutingResult() {
-        assertNotNull(routerContext.getRoutingResult());
-    }
+  @Test
+  public void getRoutingResult() {
+    assertNotNull(routerContext.getRoutingResult());
+  }
 
-    @Test
-    public void setRoutingResult() {
-        RoutingResult routingResult = new RoutingResult("", 9000);
+  @Test
+  public void setRoutingResult() {
+    RoutingResult routingResult = new RoutingResult("", 9000);
 
-        assertNotEquals(routingResult, routerContext.getRoutingResult());
+    assertNotEquals(routingResult, routerContext.getRoutingResult());
 
-        routerContext.setRoutingResult(routingResult);
+    routerContext.setRoutingResult(routingResult);
 
-        assertEquals(routingResult, routerContext.getRoutingResult());
-    }
+    assertEquals(routingResult, routerContext.getRoutingResult());
+  }
 }

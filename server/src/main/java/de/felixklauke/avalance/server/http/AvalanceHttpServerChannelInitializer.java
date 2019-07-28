@@ -13,27 +13,27 @@ import io.netty.handler.logging.LoggingHandler;
  */
 public class AvalanceHttpServerChannelInitializer extends ChannelInitializer<SocketChannel> {
 
-    /**
-     * The avalance server.
-     */
-    private final AvalanceServer avalanceServer;
+  /**
+   * The avalance server.
+   */
+  private final AvalanceServer avalanceServer;
 
-    /**
-     * Create a new channel initializer.
-     *
-     * @param avalanceServer The avalance server.
-     */
-    AvalanceHttpServerChannelInitializer(AvalanceServer avalanceServer) {
-        this.avalanceServer = avalanceServer;
-    }
+  /**
+   * Create a new channel initializer.
+   *
+   * @param avalanceServer The avalance server.
+   */
+  AvalanceHttpServerChannelInitializer(AvalanceServer avalanceServer) {
+    this.avalanceServer = avalanceServer;
+  }
 
-    @Override
-    protected void initChannel(SocketChannel ch) {
-        ChannelPipeline pipeline = ch.pipeline();
+  @Override
+  protected void initChannel(SocketChannel ch) {
+    ChannelPipeline pipeline = ch.pipeline();
 
-        pipeline.addLast(new HttpRequestDecoder());
-        pipeline.addLast(new HttpResponseEncoder());
-        pipeline.addLast(new LoggingHandler());
-        pipeline.addLast(new AvalanceHttpServerHandler(avalanceServer));
-    }
+    pipeline.addLast(new HttpRequestDecoder());
+    pipeline.addLast(new HttpResponseEncoder());
+    pipeline.addLast(new LoggingHandler());
+    pipeline.addLast(new AvalanceHttpServerHandler(avalanceServer));
+  }
 }

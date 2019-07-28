@@ -13,28 +13,28 @@ import de.felixklauke.avalance.core.routing.RouterRequest;
  */
 public class AvalanceImpl implements Avalance {
 
-    /**
-     * The underlying core config.
-     */
-    private final AvalanceCoreConfig coreConfig;
+  /**
+   * The underlying core config.
+   */
+  private final AvalanceCoreConfig coreConfig;
 
-    /**
-     * The internal router.
-     */
-    private final Router router;
+  /**
+   * The internal router.
+   */
+  private final Router router;
 
-    /**
-     * Create a new avalance instance.
-     *
-     * @param coreConfig The core config.
-     */
-    AvalanceImpl(AvalanceCoreConfig coreConfig) {
-        this.coreConfig = coreConfig;
-        this.router = new RouterImpl();
-    }
+  /**
+   * Create a new avalance instance.
+   *
+   * @param coreConfig The core config.
+   */
+  AvalanceImpl(AvalanceCoreConfig coreConfig) {
+    this.coreConfig = coreConfig;
+    this.router = new RouterImpl();
+  }
 
-    @Override
-    public void processRequest(RouterContext routerContext, RouterRequest routerRequest) {
-        router.processRequest(routerContext, routerRequest);
-    }
+  @Override
+  public void processRequest(RouterContext routerContext, RouterRequest routerRequest) {
+    router.processRequest(routerContext, routerRequest);
+  }
 }

@@ -14,65 +14,65 @@ import io.netty.handler.logging.LoggingHandler;
  */
 public class AvalanceNettyHttpServer implements AvalanceHttpServer {
 
-    /**
-     * The server we are working for.
-     */
-    private final AvalanceServer avalanceServer;
+  /**
+   * The server we are working for.
+   */
+  private final AvalanceServer avalanceServer;
 
-    /**
-     * The netty server bootstrap.
-     */
-    private ServerBootstrap serverBootstrap;
+  /**
+   * The netty server bootstrap.
+   */
+  private ServerBootstrap serverBootstrap;
 
-    /**
-     * The netty server bootstraps boss group.
-     */
-    private EventLoopGroup bossGroup;
+  /**
+   * The netty server bootstraps boss group.
+   */
+  private EventLoopGroup bossGroup;
 
-    /**
-     * The netty server bootstraps worker group.
-     */
-    private EventLoopGroup workerGroup;
+  /**
+   * The netty server bootstraps worker group.
+   */
+  private EventLoopGroup workerGroup;
 
-    /**
-     * Create a new netty based http server.
-     *
-     * @param avalanceServer The underlying avalance server.
-     */
-    public AvalanceNettyHttpServer(AvalanceServer avalanceServer) {
-        this.avalanceServer = avalanceServer;
+  /**
+   * Create a new netty based http server.
+   *
+   * @param avalanceServer The underlying avalance server.
+   */
+  public AvalanceNettyHttpServer(AvalanceServer avalanceServer) {
+    this.avalanceServer = avalanceServer;
+  }
+
+  @Override
+  public void start() {
+    bossGroup = NettyUtils.createBossGroup(1);
+    workerGroup = NettyUtils.createWorkerGroup(4);
+
+    serverBootstrap = new ServerBootstrap();
+    serverBootstrap.group(bossGroup, workerGroup)
+        .channel(NettyUtils.getServerSocketChannel())
+        .option(ChannelOption.SO_BACKLOG, 1024)
+        .handler(new LoggingHandler(LogLevel.INFO))
+        .childHandler(new AvalanceHttpServerChannelInitializer(avalanceServer));
+
+    try {
+      Channel channel = serverBootstrap.bind(8080).sync().channel();
+
+      channel.closeFuture();
+    } catch (InterruptedException e) {
+      e.printStackTrace();
     }
+  }
 
-    @Override
-    public void start() {
-        bossGroup = NettyUtils.createBossGroup(1);
-        workerGroup = NettyUtils.createWorkerGroup(4);
+  @Override
+  public void stop() {
+    bossGroup.shutdownNow();
+    workerGroup.shutdownNow();
+  }
 
-        serverBootstrap = new ServerBootstrap();
-        serverBootstrap.group(bossGroup, workerGroup)
-                .channel(NettyUtils.getServerSocketChannel())
-                .option(ChannelOption.SO_BACKLOG, 1024)
-                .handler(new LoggingHandler(LogLevel.INFO))
-                .childHandler(new AvalanceHttpServerChannelInitializer(avalanceServer));
-
-        try {
-            Channel channel = serverBootstrap.bind(8080).sync().channel();
-
-
-            channel.closeFuture();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void stop() {
-        bossGroup.shutdownNow();
-        workerGroup.shutdownNow();
-    }
-
-    @Override
-    public boolean isRunning() {
-        return serverBootstrap != null && (!bossGroup.isShutdown() || !bossGroup.isShuttingDown()) && (!workerGroup.isShutdown() || !workerGroup.isShuttingDown());
-    }
+  @Override
+  public boolean isRunning() {
+    return serverBootstrap != null && (!bossGroup.isShutdown() || !bossGroup.isShuttingDown()) && (
+        !workerGroup.isShutdown() || !workerGroup.isShuttingDown());
+  }
 }

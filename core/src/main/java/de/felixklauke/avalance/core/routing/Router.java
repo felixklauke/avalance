@@ -7,11 +7,11 @@ package de.felixklauke.avalance.core.routing;
  */
 public interface Router {
 
-    /**
-     * Process the given request in the given context.
-     *
-     * @param routerContext The router context.
-     * @param routerRequest The request itself.
-     */
-    void processRequest(RouterContext routerContext, RouterRequest routerRequest);
+  /**
+   * Process the given request in the given context.
+   *
+   * @param routerContext The router context.
+   * @param routerRequest The request itself.
+   */
+  void processRequest(RouterContext routerContext, RouterRequest routerRequest);
 }
