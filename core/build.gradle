@@ -7,7 +7,7 @@ repositories {
 dependencies {
 
     // Logging
-    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.4-groovyless'
 
     // Lombok
     compileOnly 'org.projectlombok:lombok:1.18.12'
