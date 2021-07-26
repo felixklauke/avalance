@@ -12,7 +12,7 @@ dependencies {
     compile 'de.d3adspace.constrictor:constrictor-netty:2.4.0'
 
     // Testing
-    testCompile group: 'org.powermock', name: 'powermock-module-junit4', version: '2.0.7'
+    testCompile group: 'org.powermock', name: 'powermock-module-junit4', version: '2.0.9'
     testCompile group: 'org.powermock', name: 'powermock-api-mockito2', version: '2.0.7'
 
     // Logging
