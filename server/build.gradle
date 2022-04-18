@@ -19,6 +19,6 @@ dependencies {
     compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.10'
 
     // Lombok
-    compileOnly 'org.projectlombok:lombok:1.18.22'
-    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
 }
